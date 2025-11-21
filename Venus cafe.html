@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فينوس روز كافيه | Vinus Rose Cafe</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gold: #c59d5f;
+            --primary-dark: #3e2723;
+            --accent-teal: #2a9d8f;
+            --bg-parchment: #fdfbf7;
+            --card-bg: #fff;
+            --text-color: #333;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-parchment);
+            background-image: radial-gradient(#eaddcf 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Header Section */
+        header {
+            background: var(--primary-dark);
+            color: var(--primary-gold);
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid var(--accent-teal);
+            position: relative;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .address {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .phones {
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .phone-link {
+            color: var(--accent-teal);
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .phone-link:hover {
+            background: var(--accent-teal);
+            color: #fff;
+        }
+
+        /* Navigation / Categories */
+        .nav-scroll {
+            display: flex;
+            overflow-x: auto;
+            padding: 15px;
+            gap: 10px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            scrollbar-width: none; /* Firefox */
+        }
+        .nav-scroll::-webkit-scrollbar { display: none; } /* Chrome */
+
+        .nav-btn {
+            background: var(--bg-parchment);
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--primary-dark);
+            color: var(--primary-gold);
+        }
+
+        /* Menu Container */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* Section Styling */
+        .menu-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-teal);
+        }
+
+        .section-title {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--bg-parchment);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sub-title {
+            font-size: 1rem;
+            color: #777;
+            font-weight: normal;
+            margin-right: auto; /* Pushes to left in RTL */
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* List Items */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-weight: 700;
+            color: #444;
+            width: 65%;
+        }
+        
+        .item-desc {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: var(--primary-dark);
+            background: var(--bg-parchment);
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            border: 1px solid #eaddcf;
+        }
+
+        .currency {
+            font-size: 0.8em;
+            margin-right: 3px;
+        }
+
+        /* Unified Price Box */
+        .unified-price {
+            background: var(--accent-teal);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .charges {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: inline-block;
+            border: 1px solid #ffeeba;
+        }
+
+        /* Smooth Scroll Fix */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vinus Rose Cafe</h1>
+        <h2>فينوس روز كافيه</h2>
+        <div class="address">
+            📍 شارع بغداد - قزازين - دخلة جامع الفاروق
+        </div>
+        <div class="phones">
+            <a href="tel:+96394440369" class="phone-link">094440369</a>
+            <a href="tel:+963114440360" class="phone-link">0114440360</a>
+            <a href="tel:+963934441112" class="phone-link">0934441112</a>
+        </div>
+    </header>
+
+    <nav class="nav-scroll">
+        <a href="#hot-coffee" class="nav-btn">☕ ساخنة</a>
+        <a href="#cold-coffee" class="nav-btn">🧊 باردة</a>
+        <a href="#juices" class="nav-btn">🍹 عصائر</a>
+        <a href="#milkshake" class="nav-btn">🥤 ميلك شيك</a>
+        <a href="#tajen" class="nav-btn">🥘 طواجن</a>
+        <a href="#crepe" class="nav-btn">🥞 كريب</a>
+        <a href="#waffle" class="nav-btn">🧇 وافل</a>
+        <a href="#hookah" class="nav-btn">💨 أراكيل</a>
+        <a href="#drinks" class="nav-btn">💧 مشروبات</a>
+    </nav>
+
+    <div class="container">
+
+        <div id="hot-coffee" class="menu-section">
+            <div class="section-title">
+                ☕ القهوة الساخنة 
+                <span class="sub-title">Hot Coffee</span>
+            </div>
+            <div class="menu-item"><span class="item-name">إسبريسو (Single)</span><span class="item-price">13,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">إسبريسو (Double)</span><span class="item-price">23,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">ميكاتو</span><span class="item-price">17,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">ميكاتو فليفر</span><span class="item-price">20,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">كورتادو</span><span class="item-price">18,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">كابتشينو</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">لاتيه</span><span class="item-price">22,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">لاتيه فليفر</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">فلات وايت</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">قهوة تركية</span><span class="item-price">10,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">قهوة فرنسية</span><span class="item-price">15,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">قهوة فرنسية فليفر</span><span class="item-price">17,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">نسكافيه</span><span class="item-price">15,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">هوت شوكلت</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">هوت شوكلت مارشميلو</span><span class="item-price">28,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">سحلب</span><span class="item-price">20,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">سحلب فواكه</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">سحلب مكسرات</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">شاي</span><span class="item-price">5,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">زهورات</span><span class="item-price">7,500 <span class="currency">ل.س</span></span></div>
+        </div>
+
+        <div id="cold-coffee" class="menu-section">
+            <div class="section-title">
+                🧊 القهوة الباردة 
+                <span class="sub-title">Cold Coffee</span>
+            </div>
+            <div class="menu-item"><span class="item-name">آيس لاتيه</span><span class="item-price">22,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">آيس لاتيه فليفر</span><span class="item-price">26,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">سبانيش لاتيه</span><span class="item-price">26,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">آيس ميكاتو</span><span class="item-price">22,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">آيس كراميل ميكاتو</span><span class="item-price">28,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">آيس موكا</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">فرابيه كراميل</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+        </div>
+
+        <div id="juices" class="menu-section">
+            <div class="section-title">
+                🍹 العصائر والكوكتيلات 
+                <span class="sub-title">Juices & Cocktails</span>
+            </div>
+            <div class="menu-item"><span class="item-name">ليمون / ليمون ونعناع</span><span class="item-price">20,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">بولو</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">فراولة / مانجو / كيوي / عنب</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">موز وحليب</span><span class="item-price">25,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">فراولة وموز وحليب</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">أفوكادو</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">أفوكادو (الخواجة)</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">عوار قلب</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">ميكس لوتس</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">ميكس (الخواجة)</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">إمبراطور <span class="item-desc">(فواكه وأفوكادو)</span></span><span class="item-price">33,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">إمبراطور <span class="item-desc">(فواكه وكيوي)</span></span><span class="item-price">33,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">إمبراطور شوكولا</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">قشاطي</span><span class="item-price">33,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">بينا كولادا</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">توتي فروتي <span class="item-desc">(سلطة فواكه)</span></span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+        </div>
+
+        <div id="milkshake" class="menu-section">
+            <div class="section-title">
+                🥤 ميلك شيك & سموثي 
+                <span class="sub-title">Milkshake & Smoothies</span>
+            </div>
+            <div style="margin-bottom: 15px; font-weight: bold; color: var(--primary-dark);">ميلك شيك</div>
+            <div class="menu-item"><span class="item-name">فانيليا / فيريرو / كيندر</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">نوتيلا / لوتس / بستاشيو / أوريو</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            
+            <div style="margin: 20px 0 10px 0; font-weight: bold; color: var(--primary-dark); border-top: 1px solid #eee; padding-top: 10px;">سموثي</div>
+            <div class="menu-item" style="border-bottom: none;"><span class="item-name">بلوبيري - فراولة - بلو كراساو - مانجو - موهيتو</span></div>
+            <div class="unified-price">السعر موحد: 30,000 ل.س</div>
+        </div>
+
+        <div id="tajen" class="menu-section">
+            <div class="section-title">
+                🥘 طواجن 
+                <span class="sub-title">Tajen</span>
+            </div>
+            <div class="menu-item"><span class="item-name">طاجن نوتيلا</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">طاجن لوتس</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">طاجن بستاشيو</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">طاجن أوريو</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">طاجن آيس كريم</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">طاجن فواكه</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">طاجن نوتيلا وقشطة</span><span class="item-price">45,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">طاجن (الخواجة)</span><span class="item-price">45,000 <span class="currency">ل.س</span></span></div>
+        </div>
+
+        <div id="crepe" class="menu-section">
+            <div class="section-title">
+                🥞 كريب 
+                <span class="sub-title">Crepe</span>
+            </div>
+            <div class="menu-item"><span class="item-name">كريب نوتيلا</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">كريب فواكه</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">كريب نوتيلا وموز</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">كريب فواكه ونوتيلا وقشطة</span><span class="item-price">45,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">كريب (الخواجة)</span><span class="item-price">45,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">بقجة "أم زكي"</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">فوتشيني نوتيلا</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">فوتشيني فواكه ونوتيلا</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+        </div>
+
+        <div id="waffle" class="menu-section">
+            <div class="section-title">
+                🧇 وافل / غوفر 
+                <span class="sub-title">Waffle</span>
+            </div>
+            <div class="menu-item"><span class="item-name">نوتيلا / لوتس</span><span class="item-price">30,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">بستاشيو</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">فواكه ونوتيلا</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">نوتيلا وقشطة</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">نوتيلا وآيس كريم</span><span class="item-price">35,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">غوفر (الخواجة)</span><span class="item-price">40,000 <span class="currency">ل.س</span></span></div>
+        </div>
+
+        <div id="hookah" class="menu-section">
+            <div class="section-title">
+                💨 الأراكيل 
+                <span class="sub-title">Hookah</span>
+            </div>
+            <div class="menu-item" style="display:block;">
+                <span class="item-name" style="width:100%">عجمي - فاخر - فواكه - تنباك</span>
+            </div>
+            <div class="unified-price">السعر: 28,000 ل.س</div>
+        </div>
+
+        <div id="drinks" class="menu-section">
+            <div class="section-title">
+                💧 مشروبات غازية ومياه
+            </div>
+            <div class="menu-item"><span class="item-name">مياه صغيرة</span><span class="item-price">5,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">مياه كبيرة</span><span class="item-price">10,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">صودا</span><span class="item-price">15,000 <span class="currency">ل.س</span></span></div>
+            <div class="menu-item"><span class="item-name">مشروب طاقة</span><span class="item-price">17,000 <span class="currency">ل.س</span></span></div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="charges">
+            * يضاف خدمة 12%<br>
+            * يضاف ضريبة 11%
+        </div>
+        <p>&copy; Vinus Rose Cafe</p>
+    </footer>
+
+</body>
+</html>
